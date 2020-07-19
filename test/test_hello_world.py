@@ -1,4 +1,4 @@
-from hello_world import Student
+from src.hello_world import Student
 import unittest
 
 class TestHelloWorld(unittest.TestCase):
