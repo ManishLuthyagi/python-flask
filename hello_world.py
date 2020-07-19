@@ -1,30 +1,28 @@
-from flask import Flask
+class Student:
+    def __init__(self):
+        self.roll_no = None
+        self.name = None
 
-app = Flask(__name__)
+    def get_student_detail(self):
+        return "name:{} roll_no:{}".format(self.name, self.roll_no)
 
-def generate_html(message):
-    version_number = '0001'
-    html = """
-        <html>
-        <body>
-            <div style='text-align:center;font-size:80px;'>
-                <image height="340" width="1200" src="https://user-images.githubusercontent.com/194400/41597205-a57442ea-73c4-11e8-9591-61f5c83c7e66.png">
-                <br> {0}
-                <p>Version Number: {1}</p>
-                <br>
-            </div>
-        </body>
-        </html>""".format(message,version_number)
-    return html
-
-def greet():
-    greeting = 'Welcome to CI/CD'
-    return greeting
-
-@app.route('/')
-def hello_world():
-    html = generate_html(greet())
-    return html
+    def set_student_name(self,name):
+        self.name = name
+    def set_student_roll_no(self,roll_no):
+        self.roll_no = roll_no
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    student1 = Student()
+    student2 = Student()
+
+    print(student1.get_student_detail())
+    print(student2.get_student_detail())
+
+    student1.set_student_roll_no(160109022)
+    student1.set_student_name('manish')
+    student2.set_student_roll_no(160109015)
+    student2.set_student_name('samarth')
+
+    print(student1.get_student_detail())
+    print(student2.get_student_detail())
+

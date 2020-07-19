@@ -1,19 +1,21 @@
-import hello_world
+from hello_world import Student
 import unittest
 
 class TestHelloWorld(unittest.TestCase):
 
-    def setUp(self):
-        self.app = hello_world.app.test_client()
-        self.app.testing = True
+    def test_get_student_detail_when_name_is_none_rollno_is_none(self):
+        self.assertEqual(Student().get_student_detail(),"name:None roll_no:None")
 
-    def test_status_code(self):
-        response = self.app.get('/')
-        self.assertEqual(response.status_code, 200)
-    
-    def test_greeting_message(self):
-        greeting = 'Welcome to CI/CD'
-        self.assertEqual(hello_world.greet(), greeting)
+    def test_get_student_detail_when_name_is_manish_rollno_is_none(self):
+        student = Student()
+        student.set_student_name("manish")
+        self.assertEqual(student.get_student_detail(),"name:manish roll_no:None")
+
+    def test_get_student_detail_when_name_is_none_rollno_is_160109022(self):
+        student = Student()
+        student.set_student_roll_no(160109022)
+        self.assertEqual(student.get_student_detail(),"name:None roll_no:160109022")
+
 
 if __name__ == '__main__':
     unittest.main()
