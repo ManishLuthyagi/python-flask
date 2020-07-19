@@ -12,8 +12,7 @@ jobs:
             pip install --user -r requirements.txt
       - run:
           name: Run unit tests
-          command: |
-            pytest
+          command: pytest
 workflows:
   build_test:
     jobs:
