@@ -12,11 +12,11 @@ jobs:
             pip install --user -r requirements.txt
       - run:
           name: RUN UNIT TESTS
-          command: coverage run -m pytest test/test_hello_world.py
+          command: coverage run -m --source=. pytest test/test_hello_world.py
 
       - run:
           name: GET CODE COVERAGE
-          command: coverage report
+          command: coverage report -m
 workflows:
   build_test:
     jobs:
