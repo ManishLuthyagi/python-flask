@@ -1,4 +1,6 @@
 version: 2.1
+
+
 jobs:
   run_tests:
     docker:
@@ -12,13 +14,26 @@ jobs:
             pip install --user -r requirements.txt
       - run:
           name: RUN UNIT TESTS
-          command: coverage run -m --source=. pytest test/test_hello_world.py
+          command: coverage run -m --source=. pytest tests/test_hello_world.py
 
       - run:
           name: GET CODE COVERAGE
           command: coverage report -m
+  run_tox:
+    machine:
+      image: ubuntu-1604:201903-01
+    steps:
+      - checkout
+      - run:
+          name: Installing dependency for tox
+          command: |
+            pip install tox==3.18.1
+      - run:
+          name: Running tox application
+          command: tox
 workflows:
   build_test:
     jobs:
       - run_tests
+      - run_tox
       
