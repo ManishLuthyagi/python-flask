@@ -27,7 +27,7 @@ jobs:
       - run:
           name: Installing dependency for tox
           command: |
-            pip install tox
+            pip install --user tox
       - run:
           name: Running tox application
           command: tox
