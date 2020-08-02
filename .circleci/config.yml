@@ -36,6 +36,6 @@ workflows:
     jobs:
       - run_tests
       - run_tox:
-           requiers:
+           requires:
              - run_tests
       
